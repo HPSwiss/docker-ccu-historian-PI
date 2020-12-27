@@ -7,12 +7,18 @@ ARG VERSION
 ARG CHECKSUM
 
 WORKDIR /tmp
+RUN mkdir /tmp/ccu-historian
 
+WORKDIR /tmp/ccu-historian
 ADD https://github.com/mdzio/ccu-historian/releases/download/${VERSION}/ccu-historian-${VERSION}-bin.zip .
+RUN unzip ccu-historian-${VERSION}-bin.zip && \
+    rm ccu-historian-${VERSION}-bin.zip
 
-RUN echo "${CHECKSUM}  ccu-historian-${VERSION}-bin.zip" | sha512sum -c - && \
-    mkdir /tmp/ccu-historian && \
-    unzip ccu-historian-${VERSION}-bin.zip -d /tmp/ccu-historian
+WORKDIR /tmp
+
+#RUN echo "${CHECKSUM}  ccu-historian-${VERSION}-bin.zip" | sha512sum -c - && \
+#    mkdir /tmp/ccu-historian && \
+#    unzip ccu-historian-${VERSION}-bin.zip -d /tmp/ccu-historian
 
 FROM adoptopenjdk
 
