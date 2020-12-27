@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: arm32v7/debian:buster
+    runs-on: ubuntu-16.04
     steps:
       - uses: actions/checkout@v2
         
