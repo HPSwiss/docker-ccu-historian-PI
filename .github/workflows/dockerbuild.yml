@@ -20,9 +20,9 @@ jobs:
         run: docker login -u $DOCKER_USER -p $DOCKER_PWD
         
       - name: Build Docker Image
-        run: docker build ./ -t ccu-historian/pi:2.5.2
+        run: docker build ./ -t ccu-historian-4-docker-pi:2.5.2
         
       - name: push to docker
-        run: docker push ccu-historian/pi:2.5.2
+        run: docker push ccu-historian-4-docker-pi:2.5.2
           
      
